@@ -1,1 +1,139 @@
-<p>テストです</p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sammakko Site</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #fff;
+    }
+
+    header {
+      background: #f5f5f5;
+      padding: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 20px auto;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 24px;
+    }
+
+    @media (max-width: 800px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .content {
+      background: #fff;
+    }
+
+    .sidebar {
+      background: #fafafa;
+      border-left: 1px solid #eee;
+      padding: 16px;
+    }
+
+    footer {
+      margin-top: 40px;
+      background: #f5f5f5;
+      padding: 16px;
+      border-top: 1px solid #ddd;
+      text-align: center;
+    }
+
+    /* Game list */
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .game-item {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .game-item img {
+      width: 100%;
+      display: block;
+    }
+
+    .game-item .title {
+      padding: 8px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    /* Article */
+    .article {
+      max-width: 700px;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="inner">
+      <div class="logo">Sammakko Studio</div>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#games">Games</a>
+        <a href="#blog">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="content">
+      <h2 id="games">ゲーム一覧</h2>
+      <div class="game-grid">
+        <div class="game-item">
+          <img src="https://placehold.co/400x300" />
+          <div class="title">Game Title 1</div>
+        </div>
+        <div class="game-item">
+          <img src="https://placehold.co/400x300" />
+          <div class="title">Game Title 2</div>
+        </div>
+      </div>
+
+      <h2 id="blog" style="margin-top:40px;">記事ページ（サンプル）</h2>
+      <div class="article">
+        <h3>記事タイトル</h3>
+        <p>ここに記事本文が入ります。技術ブログや開発記事をここに追加できます。</p>
+      </div>
+    </div>
+
+    <aside class="sidebar">
+      <h3>広告スペース</h3>
+      <p>ここに広告タグ（aタグなど）を自由に置けます。</p>
+    </aside>
+  </main>
+
+  <footer>
+    © 2025 Sammakko Studio
+  </footer>
+</body>
+</html>
