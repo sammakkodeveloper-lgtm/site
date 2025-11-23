@@ -1,3 +1,86 @@
+@charset "UTF-8";
+/* Sammakko Web Reset CSS */
+/* 基本のボックスサイズを統一 */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* html, body の基本設定 */
+html, body {
+  height: 100%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  background: #fff;
+  color: #000;
+  scroll-behavior: smooth;
+}
+
+/* 見出し・段落・リスト */
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  font-weight: normal;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* リンク・画像・テーブル */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* フォーム要素 */
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
+  border: none;
+  outline: none;
+  color: inherit;
+}
+
+/* ボックス要素 */
+main, section, article, aside, header, footer, nav {
+  display: block;
+}
+
+/* iframe & video */
+iframe, video {
+  max-width: 100%;
+  display: block;
+}
+
+* {
+  font-family: "M PLUS 1", sans-serif;
+  font-size: 16px;
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 body {
   margin: 0;
   font-family: sans-serif;
@@ -21,6 +104,18 @@ header .inner {
   align-items: center;
 }
 
+.logo {
+  max-width: 200px;
+  width: 100%;
+}
+
+.header_nav_item {
+  font-family: "Momo Trust Display", sans-serif;
+  color: inherit;
+  text-decoration: none;
+  margin-right: 30px;
+}
+
 main {
   max-width: 1140px;
   margin: 20px auto;
@@ -39,10 +134,23 @@ main {
   background: #fff;
 }
 
-.sidebar {
+.content-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 14px;
+}
+
+.sidebar_box {
   background: #fafafa;
   border-left: 1px solid #eee;
   padding: 16px;
+}
+
+.my_a_d {
+  margin-bottom: 20px;
+}
+.my_a_d img {
+  max-width: 300px;
 }
 
 footer {
@@ -58,6 +166,14 @@ footer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
+}
+
+.game-link {
+  transition: 0.3s ease-in-out; /* 変化を0.3秒で滑らかにする */
+  display: block;
+}
+.game-link:hover {
+  opacity: 0.6;
 }
 
 .game-item {
