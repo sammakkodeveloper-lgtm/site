@@ -3,54 +3,92 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sammakko Site</title>
+  <meta name="description" content="脱出ゲームや記事を公開しています。" />
+  <meta name="keywords" content="Unity, Blender, ゲーム, 脱出ゲーム, sammakko, ブラウザゲーム" />
+  <meta property="og:title" content="Sammakko – Web Games & Blog" />
+  <meta property="og:description" content="脱出ゲームや記事を公開しています。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sammakkodeveloper-lgtm.github.io/site/?a" />
+  <meta property="og:image" content="https://sammakkodeveloper-lgtm.github.io/site/ogp.png" />
+  <meta property="og:site_name" content="Sammakko – Web Games & Blog" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sammakko – Web Games & Blog" />
+  <meta name="twitter:description" content="脱出ゲームや記事を公開しています。" />
+  <meta name="twitter:image" content="https://sammakkodeveloper-lgtm.github.io/site/ogp.png" />
+  <link rel="icon" href="https://sammakkodeveloper-lgtm.github.io/site/assets/image/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="https://sammakkodeveloper-lgtm.github.io/site/assets/image/favicon.ico" type="image/x-icon">
+  <title>Sammakko</title>
 	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@100..900&family=M+PLUS+Rounded+1c&family=Momo+Trust+Display&display=swap" rel="stylesheet">
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-683ZNENY1B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-683ZNENY1B');
+</script>
 <body>
-  <header>
-    <div class="inner">
-      <div class="logo"><img src="assets/image/logo.svg" alt="sammakko"></div>
-      <nav>
-        <a href="#">Home</a>
-        <a href="#games">Games</a>
-        <a href="#blog">Blog</a>
-      </nav>
-    </div>
-  </header>
-
+  <div id="header"></div>
   <main>
     <div class="content">
-      <h2 id="games">ゲーム一覧</h2>
+      <h2 class="content-title" id="games">脱出ゲーム</h2>
       <div class="game-grid">
+        <a class="game-link" href="frogroom/">
         <div class="game-item">
-          <img src="https://placehold.co/400x300" />
-          <div class="title">Game Title 1</div>
+          <img src="assets/image/frogroom_thum.png" />
+          <div class="title">FROG ROOM</div>
         </div>
+        </a>
         <div class="game-item">
           <img src="https://placehold.co/400x300" />
           <div class="title">Game Title 2</div>
         </div>
       </div>
 
-      <h2 id="blog" style="margin-top:40px;">記事ページ（サンプル）</h2>
+      <h2 class="content-title" id="blog" style="margin-top:40px;">記事ページ（サンプル）</h2>
       <div class="article">
         <h3>記事タイトル</h3>
         <p>ここに記事本文が入ります。技術ブログや開発記事をここに追加できます。</p>
       </div>
     </div>
 
-    <aside class="sidebar">
-      <h3>広告スペース</h3>
-      <p>ここに広告タグ（aタグなど）を自由に置けます。</p>
-    </aside>
+    <div id="sidebar"></div>
   </main>
+    <div id="footer"></div>
+  <script>
+async function loadPart(id, file) {
+  try {
+    const response = await fetch(file);
+    if (!response.ok) throw new Error(`Cannot load ${file}`);
+    const html = await response.text();
+    document.getElementById(id).innerHTML = html;
+  } catch (err) {
+    console.error(err);
+  }
+}
 
-  <footer>
-    © 2025 Sammakko Studio
-  </footer>
+// 現在のページの階層に応じてパスを補正
+function getBasePath() {
+  const pathParts = window.location.pathname.split("/");
+  // "/" で終わる場合があるのでフィルター
+  const parts = pathParts.filter(p => p.length > 0);
+  const depth = parts.length - 1; // ルート直下なら 0
+  return "../".repeat(depth);
+}
+
+const basePath = getBasePath();
+
+// 読み込む
+loadPart("header", basePath + "template/header.html");
+loadPart("sidebar", basePath + "template/sidebar.html");
+loadPart("footer", basePath + "template/footer.html");
+
+
+</script>
 </body>
 </html>
