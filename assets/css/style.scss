@@ -157,6 +157,7 @@
           margin-bottom: 20px;
       a{
         max-width: 300px;
+        display: block;
       }
       img{
         max-width: 300px;
@@ -194,6 +195,8 @@
     .game-item img {
       width: 100%;
       display: block;
+      aspect-ratio: 246 / 185;
+      object-fit: cover;
     }
 
     .game-item .title {

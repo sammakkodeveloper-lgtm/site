@@ -163,6 +163,7 @@ main {
 }
 .my_a_d a {
   max-width: 300px;
+  display: block;
 }
 .my_a_d img {
   max-width: 300px;
@@ -201,6 +202,9 @@ footer {
 .game-item img {
   width: 100%;
   display: block;
+  aspect-ratio: 246/185;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .game-item .title {
