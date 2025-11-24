@@ -71,6 +71,7 @@
     *{
         font-family: "M PLUS 1", sans-serif;
         font-size: 16px;
+        color: #333;
     }
     img{
       width: 100%;
@@ -78,6 +79,39 @@
     a{
       color: inherit;
       text-decoration: none;
+    }
+    #page_top{
+      width: 50px;
+      height: 50px;
+      position: fixed;
+      right: 0;
+      bottom: 10px;
+      background: #000;  
+      opacity: 0.6;
+      border-radius: 50%;
+    }
+    #page_top a{
+      position: relative;
+      display: block;
+      width: 50px;
+      height: 50px;
+      text-decoration: none;
+    }
+    #page_top a::before{
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      content: '\f0d8';
+      font-size: 25px;
+      color: #fff;
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      top: -14px;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+      text-align: center;
     }
     body {
       margin: 0;
@@ -116,6 +150,8 @@
       font-family: "Momo Trust Display", sans-serif;
       color: inherit;
       text-decoration: none;
+        color: #000;
+      color: #000;
       &+ .header_nav_item{
         margin-left: 30px;
       }
@@ -186,11 +222,22 @@
       border-top: 1px solid #ddd;
       text-align: center;
     }
+    
     .copy{
       font-size: 14px;
     }
     .footer-nav{
       margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+    }
+    .footer_nav_link{
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+    .footer_nav_link + .footer_nav_link{
+      margin-left: 20px;
     }
     /* Game list */
     .game-grid {
@@ -229,4 +276,10 @@
     .article {
       max-width: 700px;
       line-height: 1.8;
+    }
+    .frogtreasure{
+      #unity-canvas{
+        width: 776px; 
+        height: 388px;  
+      }
     }
