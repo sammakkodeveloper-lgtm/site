@@ -148,6 +148,10 @@ main {
   margin-bottom: 14px;
 }
 
+.game_content + .game_content {
+  margin-top: 40px;
+}
+
 .sidebar_box {
   background: #fafafa;
   border-left: 1px solid #eee;
@@ -156,6 +160,9 @@ main {
 
 .my_a_d {
   margin-bottom: 20px;
+}
+.my_a_d a {
+  max-width: 300px;
 }
 .my_a_d img {
   max-width: 300px;
