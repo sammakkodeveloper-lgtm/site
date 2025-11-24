@@ -54,12 +54,17 @@
   </main>
     <div id="footer"></div>
   <script>
-async function loadPart(id, file) {
+async function loadPart(id, file, callback) {
   try {
     const response = await fetch(file);
     if (!response.ok) throw new Error(`Cannot load ${file}`);
     const html = await response.text();
     document.getElementById(id).innerHTML = html;
+
+    // 読み込み後にコールバックがあれば実行
+    if (callback && typeof callback === "function") {
+      callback();
+    }
   } catch (err) {
     console.error(err);
   }
@@ -76,8 +81,11 @@ const basePath = getBasePath();
 
 // 読み込む
 loadPart("header", basePath + "template/header_under.html");
-loadPart("sidebar", basePath + "template/sidebar_under.html");
+loadPart("sidebar", basePath + "template/sidebar_under.html", () => {
+  (adsbygoogle = window.adsbygoogle || []).push({});
+});
 loadPart("footer", basePath + "template/footer.html");
+
 
 </script>
 </body>

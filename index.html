@@ -75,12 +75,17 @@
   </main>
     <div id="footer"></div>
   <script>
-async function loadPart(id, file) {
+async function loadPart(id, file, callback) {
   try {
     const response = await fetch(file);
     if (!response.ok) throw new Error(`Cannot load ${file}`);
     const html = await response.text();
     document.getElementById(id).innerHTML = html;
+
+    // 読み込み後にコールバックがあれば実行
+    if (callback && typeof callback === "function") {
+      callback();
+    }
   } catch (err) {
     console.error(err);
   }
@@ -89,7 +94,6 @@ async function loadPart(id, file) {
 // 現在のページの階層に応じてパスを補正
 function getBasePath() {
   const pathParts = window.location.pathname.split("/");
-  // "/" で終わる場合があるのでフィルター
   const parts = pathParts.filter(p => p.length > 0);
   const depth = parts.length - 1; // ルート直下なら 0
   return "../".repeat(depth);
@@ -99,8 +103,11 @@ const basePath = getBasePath();
 
 // 読み込む
 loadPart("header", basePath + "template/header.html");
-loadPart("sidebar", basePath + "template/sidebar.html");
+loadPart("sidebar", basePath + "template/sidebar.html", () => {
+  (adsbygoogle = window.adsbygoogle || []).push({});
+});
 loadPart("footer", basePath + "template/footer.html");
+
 
 
 </script>
