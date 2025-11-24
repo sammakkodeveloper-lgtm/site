@@ -103,6 +103,11 @@ header .inner {
   justify-content: space-between;
   align-items: center;
 }
+@media (max-width: 500px) {
+  header .inner {
+    flex-direction: column;
+  }
+}
 
 .logo {
   max-width: 200px;
@@ -113,7 +118,9 @@ header .inner {
   font-family: "Momo Trust Display", sans-serif;
   color: inherit;
   text-decoration: none;
-  margin-right: 30px;
+}
+.header_nav_item + .header_nav_item {
+  margin-left: 30px;
 }
 
 main {
