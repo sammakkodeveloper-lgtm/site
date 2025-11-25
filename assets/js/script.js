@@ -23,3 +23,41 @@ jQuery(function() {
     return false;
   });
 });
+document.addEventListener('DOMContentLoaded', () => {
+    // ページ内のすべてのゲームリンクコンテナを取得
+    const allGameLinks = document.querySelectorAll('.game-thum-link');
+
+    // 取得した各コンテナに対して処理を実行
+    allGameLinks.forEach(gameLink => {
+        // 🚀 ループ内で、現在のコンテナ内（gameLink）から要素を検索
+        const largeThumbnail = gameLink.querySelector('.game-thum');
+        const smallThumbnails = gameLink.querySelectorAll('.game-thum-small img');
+
+        if (smallThumbnails.length > 0 && largeThumbnail) {
+            
+            // largeThumbnailに初期画像を設定する関数 (現在のコンテナ専用)
+            const setInitialImage = () => {
+                // 最初の小さいサムネイルの画像を取得
+                const initialImageSrc = smallThumbnails[0].src; 
+                if (initialImageSrc) {
+                    // 初期画像を largeThumbnail の背景に設定
+                    largeThumbnail.style.backgroundImage = `url('${initialImageSrc}')`;
+                }
+            };
+
+            setInitialImage();
+
+            // 小さいサムネイル全てにイベントリスナーを設定 (現在のコンテナ専用)
+            smallThumbnails.forEach(img => {
+                // マウスオーバー時
+                img.addEventListener('mouseenter', (event) => {
+                    const newImageSrc = event.target.src;
+                    // イベントが発生したコンテナ内の largeThumbnail にのみ適用
+                    largeThumbnail.style.backgroundImage = `url('${newImageSrc}')`;
+                });
+            });
+        }
+    });
+
+    console.log("すべてのゲームサムネイルが初期化されました。");
+});
