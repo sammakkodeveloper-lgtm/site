@@ -78,7 +78,7 @@
   </main>
     <div id="footer"></div>
     <script type="text/javascript" src="assets/js/script.js"></script>
-  <script>
+<script>
 async function loadPart(id, file, callback) {
   try {
     const response = await fetch(file);
@@ -86,7 +86,6 @@ async function loadPart(id, file, callback) {
     const html = await response.text();
     document.getElementById(id).innerHTML = html;
 
-    // 読み込み後にコールバックがあれば実行
     if (callback && typeof callback === "function") {
       callback();
     }
@@ -95,25 +94,12 @@ async function loadPart(id, file, callback) {
   }
 }
 
-// 現在のページの階層に応じてパスを補正
-function getBasePath() {
-  const pathParts = window.location.pathname.split("/");
-  const parts = pathParts.filter(p => p.length > 0);
-  const depth = parts.length - 1; // ルート直下なら 0
-  return "../".repeat(depth);
-}
-
-const basePath = getBasePath();
-
-// 読み込む
-loadPart("header", basePath + "template/header.html");
-loadPart("sidebar", basePath + "template/sidebar.html", () => {
+// 直接パス書くだけ
+loadPart("header", "template/header.html");
+loadPart("sidebar", "template/sidebar.html", () => {
   (adsbygoogle = window.adsbygoogle || []).push({});
 });
-loadPart("footer", basePath + "template/footer.html");
-
-
-
+loadPart("footer", "template/footer.html");
 </script>
 </body>
 </html>
