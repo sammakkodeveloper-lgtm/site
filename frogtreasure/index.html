@@ -18,7 +18,7 @@
   <link rel="icon" href="https://sammakkodeveloper-lgtm.github.io/site/assets/image/favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="https://sammakkodeveloper-lgtm.github.io/site/assets/image/favicon.ico" type="image/x-icon">
   <title>FROG TREASURE | Sammakko – Web Games & Blog</title>
-	<link href="../assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/style.css" rel="stylesheet" type="text/css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@100..900&family=M+PLUS+Rounded+1c&family=Momo+Trust+Display&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
   <main>
     <div class="content">
 <div class="responsive-game">
-<iframe src="../games/frogtreasure/index.html"
+<iframe src="/games/frogtreasure/index.html"
         width="800"
         height="400"
         style="border:none; overflow:hidden;">
@@ -57,41 +57,6 @@
     <div id="sidebar"></div>
   </main>
     <div id="footer"></div>
-        <script type="text/javascript" src="../assets/js/script.js"></script>
-  <script>
-async function loadPart(id, file, callback) {
-  try {
-    const response = await fetch(file);
-    if (!response.ok) throw new Error(`Cannot load ${file}`);
-    const html = await response.text();
-    document.getElementById(id).innerHTML = html;
-
-    // 読み込み後にコールバックがあれば実行
-    if (callback && typeof callback === "function") {
-      callback();
-    }
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-function getBasePath() {
-  const pathParts = window.location.pathname.split("/");
-  const parts = pathParts.filter(p => p.length > 0);
-  const depth = parts.length - 1; // ルート直下なら 0
-  return "../".repeat(depth);
-}
-
-const basePath = getBasePath();
-
-// 読み込む
-loadPart("header", basePath + "template/header_under.html");
-loadPart("sidebar", basePath + "template/sidebar_under.html", () => {
-  (adsbygoogle = window.adsbygoogle || []).push({});
-});
-loadPart("footer", basePath + "template/footer_under.html");
-
-
-</script>
+        <script type="text/javascript" src="/assets/js/script.js"></script>
 </body>
 </html>

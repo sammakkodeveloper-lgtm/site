@@ -1,3 +1,23 @@
+async function loadPart(id, file, callback) {
+  try {
+    const response = await fetch(file);
+    if (!response.ok) throw new Error(`Cannot load ${file}`);
+    const html = await response.text();
+    document.getElementById(id).innerHTML = html;
+
+    if (callback && typeof callback === "function") {
+      callback();
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+loadPart("header", "/template/header.html");
+loadPart("sidebar", "/template/sidebar.html", () => {
+  (adsbygoogle = window.adsbygoogle || []).push({});
+});
+loadPart("footer", "/template/footer.html");
+
 jQuery(function() {
   var appear = false;
   var pagetop = $('#page_top');
