@@ -191,9 +191,38 @@
       }
     }
     .sidebar_box {
-      background: #fafafa;
-      border-left: 1px solid #eee;
+      background: #f5f5f5;
+      border: 1px solid #ddd;
       padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      &.category{
+        display: none;
+      }
+    }
+    .blog{
+      .sidebar_box{
+        &.category{
+          display: block;
+        }
+      }
+    }
+    .sidebar_box_title{
+      font-weight: bold;
+      font-size: 18px;  
+      margin-bottom: 15px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid #ddd; 
+    }
+    .sidebar_box li {
+      margin-bottom: 5px; 
+    }
+    .sidebar_box .category-link a {
+      display: block; 
+      padding: 5px 10px;
+      &:hover{
+        text-decoration: underline;
+      }
     }
     .my_a_d{
           margin-bottom: 20px;
@@ -395,4 +424,8 @@
 .game-operation{
   font-size: 14px;
   margin-top: 24px;
+}
+.blog-img{
+  max-width: 500px;
+  width: 100%;
 }
