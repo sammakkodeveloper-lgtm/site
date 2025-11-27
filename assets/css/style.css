@@ -317,6 +317,9 @@ footer {
   background-color: #eee;
   background-size: contain;
   background-position: center;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+  background-repeat: no-repeat;
 }
 
 .game-info {
@@ -410,4 +413,9 @@ footer {
 .margin80-40 {
   margin-top: 80px;
   margin-bottom: 40px;
+}
+
+.game-operation {
+  font-size: 14px;
+  margin-top: 24px;
 }/*# sourceMappingURL=style.css.map */
