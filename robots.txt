@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /footer.html
+Disallow: /header.html
+Disallow: /sidebar.html

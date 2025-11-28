@@ -28,29 +28,31 @@ document.addEventListener('DOMContentLoaded', () => {
         const defaultImageSrc = largeThumbnail ? largeThumbnail.dataset.defaultImage : null;
 
         if (smallThumbnailContainers.length > 0 && largeThumbnail && defaultImageSrc) {
-            
-            // largeThumbnailにデフォルト画像を設定する関数
-            const setDefaultImage = () => {
+            const setDefaultState = () => {
                 largeThumbnail.style.backgroundImage = `url('${defaultImageSrc}')`;
+                largeThumbnail.style.backgroundColor = '#fff';
             };
 
-            // 初期表示: デフォルト画像を設定
-            setDefaultImage();
+            // 初期表示: デフォルトの状態を設定
+            setDefaultState();
+
             smallThumbnailContainers.forEach(container => {
                 
-                // マウスオーバー時: ホバーした li の中の img の src を取得して切り替える
+                // マウスオーバー時
                 container.addEventListener('mouseenter', (event) => {
-                    // ホバーした li の中から img 要素を検索
                     const imgElement = event.currentTarget.querySelector('img'); 
                     if (imgElement) {
                         const newImageSrc = imgElement.src;
+                        
+                        // 画像を切り替える
                         largeThumbnail.style.backgroundImage = `url('${newImageSrc}')`;
+                        largeThumbnail.style.backgroundColor = '#000';
                     }
                 });
 
-                // マウスアウト時: デフォルト画像に戻す
+                // マウスアウト時: デフォルトの状態に戻す
                 container.addEventListener('mouseleave', () => {
-                    setDefaultImage();
+                    setDefaultState(); // デフォルト画像と背景色に戻す関数を呼び出す
                 });
             });
         }
