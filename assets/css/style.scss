@@ -325,7 +325,7 @@
     flex: 3;
     min-width: 0;
     aspect-ratio: 7 / 5;
-    background-color: #eee;
+    background-color: #000;
     background-size: contain;
     background-position: center;
     transition: opacity 0.3s ease-in-out;   
@@ -362,7 +362,6 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    gap: 8px;
     flex-wrap: wrap;
 }
 
@@ -372,6 +371,7 @@
     cursor: pointer;
     overflow: hidden;
     transition: border-color 0.2s ease;
+    padding: 4px;
 }
 
 .game-thum-small img {

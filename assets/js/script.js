@@ -19,36 +19,38 @@ loadPart("sidebar", "/template/sidebar.html", () => {
 loadPart("footer", "/template/footer.html");
 
 document.addEventListener('DOMContentLoaded', () => {
-    // ページ内のすべてのゲームリンクコンテナを取得
     const allGameLinks = document.querySelectorAll('.game-thum-link');
 
-    // 取得した各コンテナに対して処理を実行
     allGameLinks.forEach(gameLink => {
-        // 🚀 ループ内で、現在のコンテナ内（gameLink）から要素を検索
         const largeThumbnail = gameLink.querySelector('.game-thum');
-        const smallThumbnails = gameLink.querySelectorAll('.game-thum-small img');
+        const smallThumbnailContainers = gameLink.querySelectorAll('.game-thum-small'); 
+        
+        const defaultImageSrc = largeThumbnail ? largeThumbnail.dataset.defaultImage : null;
 
-        if (smallThumbnails.length > 0 && largeThumbnail) {
+        if (smallThumbnailContainers.length > 0 && largeThumbnail && defaultImageSrc) {
             
-            // largeThumbnailに初期画像を設定する関数 (現在のコンテナ専用)
-            const setInitialImage = () => {
-                // 最初の小さいサムネイルの画像を取得
-                const initialImageSrc = smallThumbnails[0].src; 
-                if (initialImageSrc) {
-                    // 初期画像を largeThumbnail の背景に設定
-                    largeThumbnail.style.backgroundImage = `url('${initialImageSrc}')`;
-                }
+            // largeThumbnailにデフォルト画像を設定する関数
+            const setDefaultImage = () => {
+                largeThumbnail.style.backgroundImage = `url('${defaultImageSrc}')`;
             };
 
-            setInitialImage();
+            // 初期表示: デフォルト画像を設定
+            setDefaultImage();
+            smallThumbnailContainers.forEach(container => {
+                
+                // マウスオーバー時: ホバーした li の中の img の src を取得して切り替える
+                container.addEventListener('mouseenter', (event) => {
+                    // ホバーした li の中から img 要素を検索
+                    const imgElement = event.currentTarget.querySelector('img'); 
+                    if (imgElement) {
+                        const newImageSrc = imgElement.src;
+                        largeThumbnail.style.backgroundImage = `url('${newImageSrc}')`;
+                    }
+                });
 
-            // 小さいサムネイル全てにイベントリスナーを設定 (現在のコンテナ専用)
-            smallThumbnails.forEach(img => {
-                // マウスオーバー時
-                img.addEventListener('mouseenter', (event) => {
-                    const newImageSrc = event.target.src;
-                    // イベントが発生したコンテナ内の largeThumbnail にのみ適用
-                    largeThumbnail.style.backgroundImage = `url('${newImageSrc}')`;
+                // マウスアウト時: デフォルト画像に戻す
+                container.addEventListener('mouseleave', () => {
+                    setDefaultImage();
                 });
             });
         }
